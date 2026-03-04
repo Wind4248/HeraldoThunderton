@@ -1,5 +1,5 @@
 /* ============================================================
-   Lorelei M. Lanier Lotozo — Estate Planning Attorney
+   Lorelei M. Lanier — Estate Planning Attorney
    main.js — Site interactivity
    ============================================================ */
 

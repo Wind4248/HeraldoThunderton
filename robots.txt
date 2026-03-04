@@ -1,4 +1,4 @@
-# robots.txt — Lorelei M. Lanier Lotozo, Attorney at Law
+# robots.txt — Lorelei M. Lanier, Attorney at Law
 # Estate Planning Attorney — Columbus, Ohio
 
 User-agent: *
