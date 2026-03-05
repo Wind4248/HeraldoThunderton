@@ -883,6 +883,7 @@ ul { list-style: none; }
 
   .contact-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
+  .advisor-grid { grid-template-columns: 1fr !important; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 

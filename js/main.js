@@ -74,16 +74,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* --- Contact form --- */
+  /* --- Contact form (Formspree AJAX) --- */
   const form = document.querySelector('.contact-form');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const btn = form.querySelector('[type="submit"]');
-      btn.textContent = 'Message Sent!';
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending…';
       btn.disabled = true;
-      btn.style.background = '#22c55e';
-      // In production, wire to Formspree / Netlify Forms / etc.
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (response) {
+        if (response.ok) {
+          btn.textContent = 'Message Sent!';
+          btn.style.background = '#22c55e';
+          form.reset();
+        } else {
+          btn.textContent = 'Error — Please Call Us';
+          btn.style.background = '#ef4444';
+          btn.disabled = false;
+        }
+      }).catch(function () {
+        btn.textContent = 'Error — Please Call Us';
+        btn.style.background = '#ef4444';
+        btn.disabled = false;
+      });
     });
   }
 
