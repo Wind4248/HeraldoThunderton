@@ -393,12 +393,9 @@ ul { list-style: none; }
 .intro-image-wrap {
   position: relative;
   border-radius: 12px;
-  overflow: hidden;
-  background: var(--gray-200);
-  min-height: 420px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 0;
 }
 .intro-image-placeholder {
   text-align: center;
@@ -639,7 +636,6 @@ ul { list-style: none; }
 }
 .sidebar-photo {
   background: var(--gray-200);
-  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -838,6 +834,21 @@ ul { list-style: none; }
 }
 
 /* ============================================================
+   ADVISOR CARD
+   ============================================================ */
+.advisor-card {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
@@ -879,11 +890,12 @@ ul { list-style: none; }
   .hero-trust { gap: 1.25rem; }
 
   .intro-grid { grid-template-columns: 1fr; }
-  .intro-image-wrap { min-height: 260px; order: -1; }
+  .intro-image-wrap { order: -1; }
 
   .contact-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
-  .advisor-grid { grid-template-columns: 1fr !important; }
+  .advisor-card { grid-template-columns: 1fr; }
+  .advisor-card img { max-width: 260px; margin: 0 auto; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 
