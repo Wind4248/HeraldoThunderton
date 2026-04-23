@@ -35,22 +35,41 @@
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     "mainEntity": {
-      "@type": "Attorney",
+      "@type": ["Attorney", "Person"],
+      "@id": "https://www.loreleimlanierlaw.com/#attorney",
       "name": "Lorelei M. Lanier",
+      "givenName": "Lorelei",
+      "familyName": "Lanier",
+      "jobTitle": "Estate Planning Attorney",
       "description": "Columbus Ohio estate planning attorney with 44+ years of experience specializing in wills, trusts, probate, elder law and estate planning for Central Ohio families.",
+      "image": "https://www.loreleimlanierlaw.com/assets/images/lorelei-lanier-headshot.jpg",
+      "url": "https://www.loreleimlanierlaw.com/about.html",
       "telephone": "+16144860052",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "2029 Riverside Drive, Suite 103",
         "addressLocality": "Columbus",
         "addressRegion": "OH",
-        "postalCode": "43221"
+        "postalCode": "43221",
+        "addressCountry": "US"
+      },
+      "worksFor": {
+        "@type": "LegalService",
+        "@id": "https://www.loreleimlanierlaw.com/#business",
+        "name": "Lorelei M. Lanier, Attorney at Law",
+        "url": "https://www.loreleimlanierlaw.com/"
       },
       "alumniOf": {"@type": "EducationalOrganization", "name": "Capital University Law School"},
       "hasCredential": {"@type": "EducationalOccupationalCredential", "name": "Juris Doctor (J.D.)"},
+      "memberOf": {"@type": "Organization", "name": "Ohio State Bar Association"},
       "award": ["Martindale-Hubbell Distinguished Rating", "Client Champion Award"],
       "knowsAbout": ["Estate Planning", "Wills", "Trusts", "Probate Law", "Elder Law", "Ohio Law", "Medicaid Planning"],
-      "areaServed": "Columbus, Ohio Metropolitan Area"
+      "areaServed": "Columbus, Ohio Metropolitan Area",
+      "sameAs": [
+        "https://www.avvo.com/attorneys/43221-oh-lorelei-lanier-495041.html",
+        "https://lawyers.justia.com/lawyer/lorelei-lanier-451018",
+        "https://www.facebook.com/p/Lorelei-M-Lanier-Attorney-at-Law-100043242319977/"
+      ]
     }
   }
   </script>
