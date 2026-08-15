@@ -39,7 +39,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img { max-width: 100%; display: block; }
+/* height:auto is required — every <img> carries width/height attributes (which
+   reserve space and prevent layout shift). Without height:auto those attributes
+   become a definite height that overrides any aspect-ratio/object-fit styling,
+   stretching images vertically. */
+img { max-width: 100%; height: auto; display: block; }
 a { color: var(--gold-dark); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
@@ -396,12 +400,28 @@ ul { list-style: none; }
   gap: 4rem;
   align-items: center;
 }
+/* Photo collage. A vertical stack of three full-width portraits towered ~1100px
+   over the text column beside it, leaving a large dead gap. A wide lead image
+   with two squares beneath keeps the column roughly the height of the text. */
 .intro-image-wrap {
   position: relative;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.intro-image-wrap img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.intro-image-wrap img:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 4 / 3;
+  object-position: center 20%;
+}
+.intro-image-wrap img + img {
+  aspect-ratio: 1 / 1;
+  object-position: center 25%;
 }
 .intro-image-placeholder {
   text-align: center;
@@ -540,6 +560,14 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1rem;
+}
+/* "All of Ohio" is the catch-all, not another city, and as a plain chip it was
+   left stranded alone on the last row. Spanning it reads as deliberate. */
+.areas-grid .area-chip:last-child {
+  grid-column: 1 / -1;
+  justify-content: center;
+  background: var(--cream);
+  font-weight: 600;
 }
 .area-chip {
   display: flex;
