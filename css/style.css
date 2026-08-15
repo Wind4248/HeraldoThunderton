@@ -154,6 +154,14 @@ ul { list-style: none; }
   font-size: .82rem;
   padding: .45rem 0;
 }
+/* Address + hours block. Was an inline style repeated on all five pages; it
+   needs to be a class so the mobile breakpoint can hide it. */
+.top-bar-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
 .top-bar .container {
   display: flex;
   justify-content: space-between;
@@ -400,6 +408,19 @@ ul { list-style: none; }
   gap: 4rem;
   align-items: center;
 }
+/* Grid items default to min-width:auto, so they refuse to shrink below their
+   content's intrinsic width and push the track wider than the grid. On a 390px
+   phone this made the contact card 422px wide and scrolled the whole page
+   sideways with the address and hours cut off. */
+.contact-grid > *,
+.about-grid > *,
+.intro-grid > *,
+.advisor-card > *,
+.footer-grid > *,
+.form-row > * {
+  min-width: 0;
+}
+
 /* Photo collage. A vertical stack of three full-width portraits towered ~1100px
    over the text column beside it, leaving a large dead gap. A wide lead image
    with two squares beneath keeps the column roughly the height of the text. */
@@ -933,7 +954,29 @@ ul { list-style: none; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 
-  .awards-inner { gap: 1.5rem; }
+  /* Centred flex items each centre themselves once they wrap onto their own
+     line, so the four credentials sat at four different left edges. A single
+     left-aligned column lines the icons up. */
+  .awards-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: start;
+  }
+
+  /* The address and hours cost ~90px of screen above the header on a phone and
+     both appear again in the footer. Keep the tappable phone number only. */
+  .top-bar-meta { display: none; }
+  .top-bar .container { justify-content: center; }
+
+  /* "Attorney at Law · Columbus, Ohio" wrapped to two lines and pushed the
+     header taller than the logo. */
+  .logo-tagline { font-size: .62rem; letter-spacing: .04em; }
+
+  /* Hero buttons were different widths and left-aligned, which read as ragged.
+     Full width gives two clean, easily tappable targets. */
+  .hero-ctas { flex-direction: column; align-items: stretch; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
 
   .section { padding: 3.5rem 0; }
 }

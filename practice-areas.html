@@ -61,11 +61,6 @@
     .service-inner.reverse { grid-template-columns: 340px 1fr; }
     .service-inner.reverse .service-main { order: 2; }
     .service-inner.reverse .service-sidebar { order: 1; }
-    /* The facts card is much shorter than the copy beside it, which left ~600px
-       of empty column in each of these ten sections. Sticky keeps it in view
-       while you read, the same pattern the About page sidebar already uses. */
-    .service-sidebar { position: sticky; top: 100px; }
-    @media (max-width: 1024px) { .service-sidebar { position: static; } }
     /* Quick-link strip. It used to force nowrap + overflow-x at every width,
        which put a raw horizontal scrollbar across the page on desktop even
        though there was room to wrap. Wrap on desktop, swipe on mobile. */
@@ -127,7 +122,7 @@
 
   <div class="top-bar">
     <div class="container">
-      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;">
+      <div class="top-bar-meta">
         <span class="top-bar-item">📍 2029 Riverside Drive, Suite 103 · Upper Arlington, OH 43221</span>
         <span class="top-bar-item">🕐 Mon–Fri 9am–5pm</span>
       </div>
