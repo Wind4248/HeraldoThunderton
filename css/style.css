@@ -314,12 +314,14 @@ ul { list-style: none; }
 }
 .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
 
+/* Four stats never fit across the hero column, so they wrapped 3 + 1 and the
+   orphan read as a mistake. A 2x2 grid is balanced at every width. */
 .hero-trust {
-  display: flex;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255,255,255,.12);
-  flex-wrap: wrap;
 }
 .trust-stat { }
 .trust-stat strong {
@@ -408,6 +410,43 @@ ul { list-style: none; }
   gap: 4rem;
   align-items: center;
 }
+/* ============================================================
+   ICONS
+   Monoline set on a 24px grid, defined once per page as an SVG
+   sprite after <body> and referenced with <use>. Sized in em so
+   each icon inherits the font-size of whatever slot holds it,
+   and stroked in currentColor so it inherits colour too.
+   ============================================================ */
+.icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -0.14em;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Per-slot sizing and colour. Emoji carried their own colour and optical size;
+   line icons need both set explicitly or they read as too heavy and too dark. */
+.practice-icon    { font-size: 1.9rem; color: var(--gold); line-height: 1; }
+.service-icon-lg  { font-size: 2.6rem; color: var(--gold); line-height: 1; }
+.award-icon       { font-size: 1.5rem; color: var(--gold); line-height: 1; }
+.feature-icon .icon,
+.info-icon .icon,
+.contact-info-icon .icon { font-size: 1.2rem; }
+.quick-fact .icon { font-size: 1rem; }
+.top-bar-item .icon,
+.footer-contact-item .icon { font-size: .95rem; opacity: .85; }
+.area-chip .pin .icon { font-size: .95rem; }
+/* Large icons carry more visual weight than the emoji did; lighten the stroke
+   so they sit alongside the serif headings rather than shouting over them. */
+.practice-icon .icon,
+.service-icon-lg .icon { stroke-width: 1.35; }
+
 /* Grid items default to min-width:auto, so they refuse to shrink below their
    content's intrinsic width and push the track wider than the grid. On a 390px
    phone this made the contact card 422px wide and scrolled the whole page
