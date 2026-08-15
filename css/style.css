@@ -234,6 +234,12 @@ ul { list-style: none; }
   flex-direction: column;
   gap: 5px;
 }
+/* Mobile menu close button — injected by main.js into the header on every page,
+   so it must be hidden by default. The mobile media query re-shows it while the
+   menu is open. Without this base rule it renders as a stray × on desktop. */
+.nav-close {
+  display: none;
+}
 .hamburger span {
   display: block;
   width: 24px;

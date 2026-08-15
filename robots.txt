@@ -5,10 +5,10 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://www.loreleimlanierlaw.com/sitemap.xml
+Sitemap: https://loreleimlanierlaw.com/sitemap.xml
 
 # LLM-friendly summary
-# See https://www.loreleimlanierlaw.com/llms.txt
+# See https://loreleimlanierlaw.com/llms.txt
 
 # Allow all major search engines
 User-agent: Googlebot
