@@ -930,6 +930,27 @@ ul { list-style: none; }
 /* ============================================================
    ADVISOR CARD
    ============================================================ */
+/* Two photos from the same shoot read as repetition when simply stacked, so the
+   caption names the team and gives the second one a reason to be there. */
+.advisor-photos {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.advisor-photos img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+}
+.advisor-photos figcaption {
+  font-size: .78rem;
+  line-height: 1.45;
+  color: var(--gray-500);
+}
+.advisor-photos figcaption sup { font-size: .7em; vertical-align: super; }
+
 .advisor-card {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -989,7 +1010,7 @@ ul { list-style: none; }
   .contact-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .advisor-card { grid-template-columns: 1fr; }
-  .advisor-card img { max-width: 260px; margin: 0 auto; }
+  .advisor-photos { max-width: 260px; margin: 0 auto; text-align: center; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 
