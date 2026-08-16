@@ -415,7 +415,7 @@ ul { list-style: none; }
    Monoline set on a 24px grid, defined once per page as an SVG
    sprite after <body> and referenced with <use>. Sized in em so
    each icon inherits the font-size of whatever slot holds it,
-   and stroked in currentColor so it inherits colour too.
+   and stroked in currentColor so it inherits color too.
    ============================================================ */
 .icon {
   width: 1em;
@@ -430,7 +430,7 @@ ul { list-style: none; }
   stroke-linejoin: round;
 }
 
-/* Per-slot sizing and colour. Emoji carried their own colour and optical size;
+/* Per-slot sizing and color. Emoji carried their own color and optical size;
    line icons need both set explicitly or they read as too heavy and too dark. */
 .practice-icon    { font-size: 1.9rem; color: var(--gold); line-height: 1; }
 .service-icon-lg  { font-size: 2.6rem; color: var(--gold); line-height: 1; }
@@ -1014,7 +1014,7 @@ ul { list-style: none; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 
-  /* Centred flex items each centre themselves once they wrap onto their own
+  /* Centered flex items each center themselves once they wrap onto their own
      line, so the four credentials sat at four different left edges. A single
      left-aligned column lines the icons up. */
   .awards-inner {
