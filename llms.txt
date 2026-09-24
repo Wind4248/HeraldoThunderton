@@ -28,7 +28,7 @@ Lorelei operates a boutique practice where every client works directly with her 
 6. **Healthcare Directives & Living Wills** — Healthcare POA, advance directives, HIPAA authorization, DNR
 7. **Elder Law & Medicaid Planning** — Ohio Medicaid 5-year look-back, nursing home asset protection, spousal protection, guardianship
 8. **Business Succession Planning** — Buy-sell agreements, business trusts, ownership transfer, family business transitions
-9. **Beneficiary Designation Review** — Life insurance, 401(k), IRA, TOD deed (ORC § 5817) coordination with estate plan
+9. **Beneficiary Designation Review** — Life insurance, 401(k), IRA, TOD deed (ORC § 5302.22) coordination with estate plan
 10. **Estate Plan Review & Updates** — 3-5 year review cycle, life-event triggered updates, plans from other attorneys
 
 ## Service Areas
@@ -57,7 +57,7 @@ Statewide: Licensed in all of Ohio
 - Ohio Medicaid has a 5-year look-back period for asset protection trusts
 - Columbus-area nursing home costs: $8,000–$12,000/month
 - If you die without a will in Ohio, ORC § 2105.06 (intestacy) determines asset distribution
-- Ohio transfer-on-death (TOD) deeds are governed by ORC § 5817
+- Ohio transfer-on-death (TOD) deeds are governed by ORC § 5302.22
 - Beneficiary designations override wills in Ohio
 - Estate plans should be reviewed every 3–5 years or after major life events
 
@@ -111,7 +111,7 @@ If you die without a will in Ohio (called 'dying intestate'), Ohio Revised Code 
 A will alone requires your estate to go through Ohio probate — a public, court-supervised process that typically takes 6 to 18 months. A revocable living trust avoids probate entirely, transfers assets privately and immediately, and also protects you during incapacity. Many Columbus families benefit from having both a trust and a pour-over will.
 
 **What is a transfer-on-death deed in Ohio?**
-An Ohio transfer-on-death (TOD) designation affidavit — governed by ORC § 5817 — allows you to name a beneficiary for your real estate. When you pass away, the property transfers directly to that person without going through probate. TOD deeds override your will, so they must be coordinated with your overall estate plan.
+An Ohio transfer-on-death (TOD) designation affidavit — governed by ORC § 5302.22 — allows you to name a beneficiary for your real estate. When you pass away, the property transfers directly to that person without going through probate. TOD deeds override your will, so they must be coordinated with your overall estate plan.
 
 **Can I do my own estate planning with online forms?**
 While online legal form services exist, Ohio has specific requirements for wills (ORC § 2107), powers of attorney, and healthcare directives that generic templates frequently get wrong. A will that doesn't meet Ohio's witnessing requirements can be declared invalid by probate court. Professional estate planning with flat-fee pricing is often more affordable than people expect.
