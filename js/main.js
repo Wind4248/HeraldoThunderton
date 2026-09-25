@@ -43,21 +43,40 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  /* --- FAQ accordion --- */
+  /* --- FAQ accordion ---
+     The questions are div[role="button"][tabindex="0"], so they take keyboard
+     focus. They previously listened for 'click' only, which a mouse fires but
+     Enter and Space on a div do not — so every one of these questions could be
+     focused and then not opened. aria-expanded was also written once in the
+     markup as "false" and never updated, so assistive tech announced the wrong
+     state permanently. Both are WCAG 2.1.1 (Keyboard) / 4.1.2 (Name, Role,
+     Value) failures on the largest interactive component on the page. */
+  function toggleFaq(question) {
+    const item = question.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item').forEach(function (i) {
+      i.classList.remove('open');
+      const q = i.querySelector('.faq-question');
+      if (q) q.setAttribute('aria-expanded', 'false');
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      question.setAttribute('aria-expanded', 'true');
+    }
+  }
+
   document.querySelectorAll('.faq-question').forEach(function (question) {
     question.addEventListener('click', function () {
-      const item = this.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
+      toggleFaq(this);
+    });
 
-      // Close all
-      document.querySelectorAll('.faq-item').forEach(function (i) {
-        i.classList.remove('open');
-      });
-
-      // Toggle clicked
-      if (!isOpen) {
-        item.classList.add('open');
-      }
+    question.addEventListener('keydown', function (event) {
+      if (event.key !== 'Enter' && event.key !== ' ' && event.key !== 'Spacebar') return;
+      // Space would otherwise scroll the page out from under the user.
+      event.preventDefault();
+      toggleFaq(this);
     });
   });
 
@@ -80,6 +99,12 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const btn = form.querySelector('[type="submit"]');
+      /* The outcome was previously signalled only by the submit button's label
+         and colour. A screen-reader user got no announcement either way, so a
+         failed enquiry to a law firm could pass unnoticed. #form-status is an
+         aria-live region. */
+      const status = document.getElementById('form-status');
+      function announce(message) { if (status) status.textContent = message; }
       const originalText = btn.textContent;
       btn.textContent = 'Sending…';
       btn.disabled = true;
@@ -92,16 +117,19 @@ document.addEventListener('DOMContentLoaded', function () {
         if (response.ok) {
           btn.textContent = 'Message Sent!';
           btn.style.background = '#22c55e';
+          announce('Thank you — your message has been sent. Lorelei will be in touch.');
           form.reset();
         } else {
           btn.textContent = 'Error — Please Call Us';
           btn.style.background = '#ef4444';
           btn.disabled = false;
+          announce('Your message could not be sent. Please call the office at (614) 486-0052.');
         }
       }).catch(function () {
         btn.textContent = 'Error — Please Call Us';
         btn.style.background = '#ef4444';
         btn.disabled = false;
+        announce('Your message could not be sent. Please call the office at (614) 486-0052.');
       });
     });
   }
@@ -117,8 +145,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }, { passive: true });
 
-  /* --- Intersection observer for subtle fade-in --- */
-  if ('IntersectionObserver' in window) {
+  /* --- Intersection observer for subtle fade-in ---
+     Skipped entirely when the visitor has asked for reduced motion. This starts
+     48 elements on the homepage at opacity 0 and slides them in; for someone with
+     a vestibular disorder that is not decoration, and if the observer never fires
+     the content would stay invisible. Respecting the preference means they simply
+     get the page, already visible. */
+  const prefersReducedMotion = window.matchMedia
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if ('IntersectionObserver' in window && !prefersReducedMotion) {
     const style = document.createElement('style');
     style.textContent = '.reveal{opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}.reveal.visible{opacity:1;transform:none}';
     document.head.appendChild(style);

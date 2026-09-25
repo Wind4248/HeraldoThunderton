@@ -169,7 +169,12 @@ ul { list-style: none; }
   gap: 1rem;
   flex-wrap: wrap;
 }
-.top-bar a { color: var(--gold-light); }
+/* The brand red on the dark top bar measured 2.36:1 (#e60000 on #3a3a3a) — it
+   failed AA 4.5:1 and even the 3:1 large-text floor, on the firm's main
+   call-to-action. Red is inherently low-luminance, so no usable shade of it
+   clears 4.5:1 here; white does, at 11.37:1. The red is kept everywhere it
+   works, e.g. on white where it is 5.89:1. */
+.top-bar a { color: var(--white); text-decoration: underline; text-underline-offset: 2px; }
 .top-bar a:hover { color: var(--white); text-decoration: none; }
 .top-bar-item { display: flex; align-items: center; gap: .4rem; }
 
@@ -902,10 +907,13 @@ ul { list-style: none; }
   gap: 1rem;
   flex-wrap: wrap;
 }
-.footer-bottom p { font-size: .8rem; color: rgba(255,255,255,.5); margin: 0; }
+/* was .5 alpha = 4.14:1, below AA */
+.footer-bottom p { font-size: .8rem; color: rgba(255,255,255,.7); margin: 0; }
 .footer-disclaimer {
   font-size: .78rem;
-  color: rgba(255,255,255,.4);
+  /* was .4 alpha = 3.25:1 — the "does not constitute legal advice" notice was
+     the least readable text on the page. .7 measures 6.52:1. */
+  color: rgba(255,255,255,.7);
   max-width: 700px;
   text-align: center;
   padding: 1rem 0 1.5rem;
@@ -1054,4 +1062,36 @@ ul { list-style: none; }
   .site-header, .top-bar, .mobile-cta-bar, .site-footer { display: none; }
   .hero { background: none; color: var(--text); padding: 1rem 0; }
   .hero h1 { color: var(--navy); }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   Honour the OS-level preference. Transitions here are decorative;
+   nothing on the site depends on animation to convey meaning.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* Live region for contact-form outcome. Empty until the form reports back, so it
+   occupies no space; styled to be visible, not screen-reader-only, because a
+   sighted user benefits from the same confirmation. */
+.form-status:empty { display: none; }
+.form-status {
+  margin: 0 0 1rem;
+  padding: .75rem 1rem;
+  border-radius: 8px;
+  background: var(--cream);
+  border-left: 3px solid var(--gold);
+  font-size: .9rem;
+  color: var(--text);
 }
