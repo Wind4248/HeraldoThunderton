@@ -1095,3 +1095,9 @@ ul { list-style: none; }
   font-size: .9rem;
   color: var(--text);
 }
+
+/* Photographer credit. Joe's standing rule is to name and link the people whose
+   work he uses; the images on this site are from two shoots by his brother. */
+.footer-credit { font-size: .8rem; color: rgba(255,255,255,.7); margin: .35rem 0 0; }
+.footer-credit a { color: rgba(255,255,255,.9); text-decoration: underline; }
+.footer-credit a:hover { color: #fff; }
